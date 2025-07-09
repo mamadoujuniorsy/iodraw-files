@@ -1,12 +1,13 @@
 ```mermaid
-User->Alfresco Content App (Angular): uses
-Alfresco Content App (Angular)->Alfresco REST API: fetches metadata
-Alfresco REST API->Alfresco ACS 7.4: reads/writes documents
-Alfresco Content App (Angular)->Analyze with AI Button: clicks
-Analyze with AI Button->FastAPI Backend: sends nodeId
-FastAPI Backend->OpenRouter / Mistral API: sends PDF content
-OpenRouter / Mistral API->FastAPI Backend: returns JSON
-FastAPI Backend->Alfresco REST API: updates metadata
-Alfresco REST API->Alfresco Content App (Angular): returns updated view
+graph TD
+    User["User"] -->|uses| ACA["Alfresco Content App (Angular)"]
+    ACA -->|fetches metadata| API["Alfresco REST API"]
+    API -->|reads/writes documents| ACS["Alfresco ACS 7.4"]
+    ACA -->|clicks| BTN["\"Analyze with AI\" Button"]
+    BTN -->|sends nodeId| FAST["FastAPI Backend"]
+    FAST -->|sends PDF content| MISTRAL["OpenRouter / Mistral API"]
+    MISTRAL -->|returns JSON| FAST
+    FAST -->|PATCH metadata| API
+    API -->|returns updated data| ACA
 
 ```
