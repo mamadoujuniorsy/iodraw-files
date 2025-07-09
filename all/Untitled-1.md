@@ -1,4 +1,5 @@
 ```mermaid
+
 User->Alfresco Content App (Angular): uses
 Alfresco Content App (Angular)->Alfresco REST API: fetches metadata
 Alfresco REST API->Alfresco ACS 7.4: reads/writes documents
